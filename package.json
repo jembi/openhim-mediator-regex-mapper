@@ -1,0 +1,28 @@
+{
+  "name": "openhim-mediator-regex-mapper",
+  "version": "0.1.0",
+  "description": "An OpenHIM mediator that does a sed-like regex replacement on the HTTP body of the incoming requets or outgoing response.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/test.js",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "openhim",
+    "mediator",
+    "regex",
+    "sed",
+    "mapper"
+  ],
+  "author": "Jembi",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "openhim-mediator-utils": "^0.2.2"
+  },
+  "devDependencies": {
+    "eslint": "^1.10.1"
+  },
+  "directories": {
+    "test": "test"
+  }
+}

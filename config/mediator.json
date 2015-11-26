@@ -1,0 +1,97 @@
+{
+  "urn": "urn:uuid:8d03467b-fda3-4546-bb3e-06285c32a201",
+  "version": "0.1.0",
+  "name": "regex-mapper",
+  "description": "An OpenHIM mediator that does a sed-like regex replacement on the HTTP body of the incoming requets or outgoing response.",
+  "defaultChannelConfig": [
+    {
+      "name": "regex-mapper",
+      "urlPattern": "/regex/.*",
+      "alerts": [],
+      "txRerunAcl": [],
+      "txViewFullAcl": [],
+      "txViewAcl": [],
+      "properties": [],
+      "matchContentTypes": [],
+      "routes": [
+        {
+          "name": "Regex mediator",
+          "host": "localhost",
+          "path": "",
+          "port": "8523",
+          "primary": true,
+          "type": "http"
+        }
+      ],
+      "allow": ["admin"],
+      "type": "http"
+    }
+  ],
+  "endpoints": [
+    {
+      "name": "Regex mediator",
+      "host": "localhost",
+      "path": "",
+      "port": "8523",
+      "primary": true,
+      "type": "http"
+    }
+  ],
+  "configDefs": [
+    {
+      "param": "upstream",
+      "displayName": "Upstream Server",
+      "description": "The upstream server to which modified requests should be sent.",
+      "type": "struct",
+      "template": [
+        {
+          "param": "scheme",
+          "displayName": "scheme",
+          "type": "option",
+          "values": ["http", "https"]
+        },
+        {
+          "param": "host",
+          "displayName": "Host",
+          "type": "string"
+        },
+        {
+          "param": "port",
+          "displayName": "Port",
+          "type": "number"
+        },
+        {
+          "param": "path",
+          "displayName": "Path",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "param": "reqReplacements",
+      "displayName": "Request Replacement RegEx",
+      "description": "A list of Regular Expressions and a value to replace matches with (All regexes are matched using the global flag). These RegEx are run against the HTTP Body of the request sent to the mediator.",
+      "type": "map"
+    },
+    {
+      "param": "resReplacements",
+      "displayName": "Response Replacement RegEx",
+      "description": "A list of Regular Expressions and a value to replace matches with (All regexes are matched using the global flag). These RegEx are run against the HTTP Body of the response recieved by the mediator from another service.",
+      "type": "map"
+    }
+  ],
+  "config": {
+    "upstream": {
+      "path":"/",
+      "port":8521,
+      "host":"localhost",
+      "scheme":"http"
+    },
+    "reqReplacements": {
+      "replaceme(\\d+)": "new$1"
+    },
+    "resReplacements": {
+      "replaceme(\\d+)": "new$1"
+    }
+  }
+}
