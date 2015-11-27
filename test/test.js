@@ -1,5 +1,6 @@
 'use strict';
 
+const tap = require('tap');
 const http = require('http');
 const testSer = require('./test-server');
 const config = require('../config/config');
@@ -26,6 +27,7 @@ testSer.startServer(() => {
 
     res.on('end', () => {
       console.log('Mediator response: ' + body);
+      tap.ok(body.indexOf('new'), 'Response replacements ran');
       process.exit();
     });
   });

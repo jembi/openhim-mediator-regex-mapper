@@ -4,7 +4,7 @@
   "description": "An OpenHIM mediator that does a sed-like regex replacement on the HTTP body of the incoming requests or outgoing responses.",
   "main": "index.js",
   "scripts": {
-    "test": "node test/test.js",
+    "test": "tap --cov test/test.js",
     "start": "node index.js"
   },
   "keywords": [
@@ -17,10 +17,12 @@
   "author": "Jembi",
   "license": "MPL-2.0",
   "dependencies": {
-    "openhim-mediator-utils": "^0.2.2"
+    "openhim-mediator-utils": "^0.2.2",
+    "replacestream": "^4.0.0"
   },
   "devDependencies": {
-    "eslint": "^1.10.1"
+    "eslint": "^1.10.1",
+    "tap": "^2.3.1"
   },
   "directories": {
     "test": "test"
