@@ -23,6 +23,7 @@ function setupReplaceStream(inStream, replacementsMap) {
 
 function setupServer() {
   let server = http.createServer((inReq, outRes) => {
+    delete inReq.headers['content-length'];
     let options = {
       hostname: config.upstream.host,
       port: config.upstream.port,
