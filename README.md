@@ -1,3 +1,5 @@
+[![OpenHIM Core](https://img.shields.io/badge/openhim--core-master-lightgrey.svg)](http://openhim.readthedocs.org/en/latest/user-guide/versioning.html)
+
 OpenHIM Mediator for Regex Replacement
 ======================================
 

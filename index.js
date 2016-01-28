@@ -11,11 +11,13 @@ const mediatorConfig = require('./config/mediator');
 
 function setupReplaceStream(inStream, replacementsMap) {
   let finalStream = inStream;
-  Object.keys(replacementsMap).forEach(function (key) {
-    let regex = new RegExp(key, 'g');
-    let replacement = replacementsMap[key];
-    finalStream = finalStream.pipe(replaceStream(regex, replacement));
-  });
+  if (replacementsMap) {
+    Object.keys(replacementsMap).forEach(function (key) {
+      let regex = new RegExp(key, 'g');
+      let replacement = replacementsMap[key];
+      finalStream = finalStream.pipe(replaceStream(regex, replacement));
+    });
+  }
   return finalStream;
 }
 
